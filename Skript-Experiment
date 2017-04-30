@@ -1,0 +1,46 @@
+# Amplifier API
+command /amplifier [<text>] [<text>] [<offline player>]:
+	permission: mcnet.dev
+	permission message: &3Permissions > &7You must be &7[&3DEV&7] to perform this action.
+	trigger:
+		execute console command "ampauto %arg-3%"
+		if arg 1 is "add":
+			if arg 2 is "x2":
+				if arg 3 is set:
+					if offlineplayer-arg is online:
+						broadcast "&3Amplifier > &e%arg-3% &7has activated an &ex2 &7amplifier!"
+						set {amplifier.%arg-3%} to "x2"
+						wait 2 hours
+						execute console command "amplifier take %arg-3%"
+					else:
+						send "&3Amplifier > &7The player must be online."
+				else:
+					send "&3Amplifier &7Listing Commands:%nl%&4/amplifier add (type) (player) &7Add an amplifier to a player &4Dev%nl%&4/amplifier take (player) &7Remove active amplifier &4Dev"
+			else if arg 2 is "x3":
+				if offlineplayer-arg is online:
+					broadcast "&3Amplifier > &e%arg-3% &7has activated an &ex3 &7amplifier!"
+					set {amplifier.%arg-3%} to "x3"
+					wait 2 hours
+					execute console command "amplifier take %arg-3%"
+				else:
+					send "&3Amplifier > &7The player must be online."
+		
+			else if arg 2 is "x4":
+				if offlineplayer-arg is online:
+					broadcast "&3Amplifier > &e%arg-3% &7has activated an &ex4 &7amplifier!"
+					set {amplifier.%arg-3%} to "x4"
+					wait 2 hours
+					execute console command "amplifier take %arg-3%"
+				else:
+					send "&3Amplifier > &7The player must be online."
+		else if arg 1 is "take":
+			if arg 2 is set:
+				if {amplifier.%arg-2%} is set:
+					delete {amplifier.%arg-2%}
+					send "&3Amplifier > &7You have deactivated &e%arg-2%'s &7amplifier."
+				else:
+					send "&3Amplifier > &7This player does not have an active amplifier."
+			else:
+				send "&3Amplifier > &72nd argument needs to be a player."
+		else:
+			send "&3Amplifier &7Listing Commands:%nl%&4/amplifier add (type) (player) &7Add an amplifier to a player &4Dev%nl%&4/amplifier take (player) &7Remove active amplifier &4Dev"
