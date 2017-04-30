@@ -1,3 +1,4 @@
+//Not used anymore
 package main;
 
 import com.google.gson.JsonObject;
@@ -16,7 +17,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 /**
- * Created by luke on 12/3/15.
+ * Created by _C02 on 12/24/16
  */
 public class Main extends JavaPlugin {
     private static Main instance;
