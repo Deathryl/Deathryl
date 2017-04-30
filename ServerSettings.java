@@ -1,8 +1,5 @@
 package main;
 
-/**
- * Created by luke on 12/3/15.
- */
 public class ServerSettings {
     private String brand;
     private String ip;
